@@ -2,7 +2,8 @@ from datetime import date
 
 class calorieDataClass:
     def __init__(self):
-        self.foodDict = {} # will map dates to foods eaten 
+        self.foodDict = {"apple": 95, "banana": 105, "sandwich": 250}
+        #self.foodDict = {} # will map dates to foods eaten 
         self.calorieDict = {}
     def add_meal(self, food_name, calories):
         if self.calorieDict.get(date.today()) is None:

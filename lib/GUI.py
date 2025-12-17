@@ -24,6 +24,7 @@ class _FoodWindow():
             def submit():
                 food_name = food_name_entry.get()
                 print("Food name was: ", food_name, " and calories: ", food_calorie_entry.get())
+
                 foodList[food_name_entry.get()] = food_calorie_entry.get()
                 input_win.destroy()
             submit_button = Button(input_win, text="Enter", command=submit)
@@ -56,9 +57,9 @@ class _CalorieWindow():
 
 
 class window():
-    def __init__(self, title, width, height, foodList=[], calorieList=[]):
-        self.foodList = foodList
-        self.calorieList = calorieList
+    def __init__(self, title, width, height, calorieData):
+        self.foodList = calorieData.foodDict
+        self.calorieList = calorieData.calorieDict
 
         self.root = Tk()
         self.root.title(title)
@@ -86,7 +87,3 @@ class window():
 
     def add_calories(self):
         window = _CalorieWindow(self.root, self.calorieList, self.foodList)
-
-myWindow = window("Calorie Tracker", 400, 600)
-while True:
-    myWindow.run()
