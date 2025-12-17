@@ -26,7 +26,7 @@ class _FoodWindow():
                 food_name = food_name_entry.get()
                 print("Food name was: ", food_name, " and calories: ", food_calorie_entry.get())
 
-                foodDict[food_name_entry.get()] = food_calorie_entry.get()
+                foodDict[food_name_entry.get()] = int(food_calorie_entry.get())
                 input_win.destroy()
             submit_button = Button(input_win, text="Enter", command=submit)
             submit_button.grid(row=2, column=0, columnspan=2, pady=10)
@@ -81,10 +81,9 @@ class window():
         ttk.Button(self.mainFrame, text="Add calories", command = self.add_calories).grid(row=3, column=0, pady=10)
 
         self.rightFrame = ttk.Frame(self.mainFrame, borderwidth=2, relief="sunken").grid(row=0, column=1, rowspan=4, sticky=(N, S, E, W), padx=10, pady=10)
-        foodsEatenVar = StringVar()
-        
-        foodsEatenVar.set(self.calorieDict[date.today()] if date.today() in self.calorieDict.keys() else "")
-        foodsEatenLabel = Label(self.rightFrame, textvariable=foodsEatenVar).grid(row=0, column=0, padx=10, pady=10)
+        self.caloriesTodayVar = StringVar()
+        self.caloriesTodayVar.set(self.calorieDict[date.today()] if date.today() in self.calorieDict.keys() else "")
+        Label(self.rightFrame, textvariable=self.caloriesTodayVar).grid(row=0, column=0, padx=10, pady=10)
 
 
     def add_food(self):
@@ -97,3 +96,4 @@ class window():
         if self.calorieDict.get(date.today()) is None:
             self.calorieDict[date.today()] = 0
         window = _CalorieWindow(self.root, self.calorieDict, self.foodDict)
+        self.caloriesTodayVar.set(self.calorieDict[date.today()])
