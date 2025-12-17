@@ -1,10 +1,4 @@
-
-# will use tkinter to build a simple Calorie tracker
-# will store data using pickle in a file
-# use matplotlib to plot calorie intake over time
-
 import os
-import matplotlib.pyplot as plt
 import tkinter as tk
 import pickle
 
