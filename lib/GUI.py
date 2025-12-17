@@ -61,11 +61,11 @@ class _CalorieWindow():
 
 
 class window():
-    def __init__(self, title, width, height, calorieData):
+    def __init__(self, title, width, height, calorieData, root):
         self.foodList = calorieData.foodDict
         self.calorieList = calorieData.calorieDict
 
-        self.root = Tk()
+        self.root = root
         self.root.title(title)
         self.root.geometry(f"{width}x{height}")
 
@@ -84,6 +84,14 @@ class window():
         ttk.Button(self.mainFrame, text="Add Food", command = self.add_food).grid(row=2, column=0, pady=10)
         ttk.Button(self.mainFrame, text="Add calories", command = self.add_calories).grid(row=3, column=0, pady=10)
         #self.calculateButton = ttk.Button(self.mainFrame, text="Add food", command = self.add_food)
+
+        self.rightFrame = ttk.Frame(self.mainFrame, borderwidth=2, relief="sunken").grid(row=0, column=1, rowspan=4, sticky=(N, S, E, W), padx=10, pady=10)
+        foodsEatenVar = StringVar()
+        
+        foodsEatenVar.set(self.calorieList[date.today()] if date.today() in self.calorieList.keys() else "")
+        foodsEatenLabel = Label(self.rightFrame, textvariable=foodsEatenVar).grid(row=0, column=0, padx=10, pady=10)
+
+
     def add_food(self):
         window = _FoodWindow(self.root, self.foodList)
 
