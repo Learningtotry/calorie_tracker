@@ -43,7 +43,8 @@ class _CalorieWindow():
         input_win.geometry("300x400")
 
         ttk.Label(input_win, text="Food item:").grid(row=0, column=0, padx=10, pady=10)
-        food_entry = Spinbox(input_win, values=self.foodList).grid(row=0, column=1, padx=10)
+        food_entry = Spinbox(input_win, values=list(self.foodList.keys()))
+        food_entry.grid(row=0, column=1, padx=10)
 
         def add_calorie():
             self.calorieList[date.today()] += self.foodList[food_entry.get()] # add the calories for this food

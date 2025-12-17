@@ -23,7 +23,7 @@ class CalorieTracker:
         self.foods = self.calorieData.foodDict
         self.calories = self.calorieData.calorieDict
 
-        self.window = window("Calorie Tracker", 400, 600, self.calorieData)
+        self.window = window("Calorie Tracker", 400, 600, self.calorieData, self.root)
 
 
     def save_data(self):
