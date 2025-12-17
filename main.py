@@ -1,10 +1,6 @@
-
-
 # will use tkinter to build a simple Calorie tracker
 # will store data using pickle in a file
 # use matplotlib to plot calorie intake over time
-
-# right now in conda environment calorie_tracker
 
 import os
 import matplotlib.pyplot as plt
@@ -32,13 +28,17 @@ class CalorieTracker:
         self.root.title("Calorie Tracking app")
         self.data_file = os.path.join("assets", "data_file.pkl")
         self.calorie_file = os.path.join("assets", "calorie_data.pkl")
-        self.foods = pickle.load(open(self.calorie_file, "rb"))
-        self.calories = pickle.load(open(self.data_file, "rb"))
+        if (os.path.getsize(self.calorie_file)) == 0:
+            self.calorieData = calorieDataClass()
+        else:
+            self.calorieData = pickle.load(open(self.data_file, "rb"))
+        self.foods = self.calorieData.foodDict
+        self.calories = self.calorieData.calorieDict
+
+
     def save_data(self):
-        with open(self.calorie_file, "wb") as f:
-            pickle.dump(self.calories, f)
         with open(self.data_file, "wb") as f:
-            pickle.dump(self.foods, f)
+            pickle.dump(self.calorieData, f)
 
 myTracker = CalorieTracker(tk.Tk())
 myTracker.save_data()

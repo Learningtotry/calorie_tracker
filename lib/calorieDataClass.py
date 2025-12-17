@@ -1,6 +1,6 @@
 import date
 
-class calorieData:
+class calorieDataClass:
     def __init__(self):
         self.foodDict = {} # will map dates to foods eaten 
         self.calorieDict = {}
@@ -13,3 +13,8 @@ class calorieData:
             self.foodDict[date.today()] = []    
         if food_name not in self.foodDict[date.today()]:
             self.foodDict[date.today()].append(food_name)
+    def get_calories(self, day):
+        return self.calorieDict.get(day)
+    def get_foods(self, day):
+        return self.foodDict.get(day)
+    
