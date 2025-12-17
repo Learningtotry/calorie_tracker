@@ -1,5 +1,5 @@
 .vscode/
-
+*.pkl
 # !.vscode/settings.json
 # !.vscode/tasks.json
 
