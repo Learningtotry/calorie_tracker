@@ -2,6 +2,7 @@
 
 from tkinter import *
 from tkinter import ttk
+from datetime import date
 
 
 class _FoodWindow():
@@ -45,7 +46,10 @@ class _CalorieWindow():
         food_entry = Spinbox(input_win, values=self.foodList).grid(row=0, column=1, padx=10)
 
         def add_calorie():
-            pass # work on it from here later
+            self.calorieList[date.today()] += self.foodList[food_entry.get()] # add the calories for this food
+            input_win.destroy()
+        ttk.Button(input_win, text="Add calories", command=add_calorie).grid(row=2, column=0, columnspan=2, pady=10)
+
 
         def submit():
             food = food_entry.get()
@@ -78,6 +82,7 @@ class window():
         self.mainFrame.rowconfigure(0, weight=1)
         
         ttk.Button(self.mainFrame, text="Add Food", command = self.add_food).grid(row=2, column=0, pady=10)
+        ttk.Button(self.mainFrame, text="Add calories", command = self.add_calories).grid(row=3, column=0, pady=10)
         #self.calculateButton = ttk.Button(self.mainFrame, text="Add food", command = self.add_food)
     def add_food(self):
         window = _FoodWindow(self.root, self.foodList)
