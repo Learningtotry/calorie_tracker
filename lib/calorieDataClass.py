@@ -1,4 +1,4 @@
-import date
+from datetime import date
 
 class calorieDataClass:
     def __init__(self):
