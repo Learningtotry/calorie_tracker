@@ -13,8 +13,11 @@ import pickle
 
 from lib import *
 
+tempFood = {"apple": 95, "banana": 105, "sandwich": 250}
+
+
 pickle.dump(1, open("assets/data_file.pkl", "wb"))
-pickle.dump(1, open("assets/calorie_data.pkl", "wb"))
+pickle.dump(tempFood, open("assets/calorie_data.pkl", "wb"))
 # the data_file will have a list of days with calorie intakes listed next to them
 class food:
     def __init__(self, name, calories):
