@@ -49,15 +49,10 @@ class _CalorieWindow():
         def add_calorie():
             self.calorieList[date.today()] += self.foodList[food_entry.get()] # add the calories for this food
             input_win.destroy()
+            print("Calorie amount was: ", self.calorieList[date.today()])
         ttk.Button(input_win, text="Add calories", command=add_calorie).grid(row=2, column=0, columnspan=2, pady=10)
 
-
-        def submit():
-            food = food_entry.get()
-            calorie_amount = self.foodList[food]
-            print("Calorie amount was: ", calorie_amount)
-            input_win.destroy()
-        submit_button = Button(input_win, text="Enter", command=submit)
+        submit_button = Button(input_win, text="Enter", command=add_calorie)
         submit_button.grid(row=1, column=0, columnspan=2, pady=10)
 
 
@@ -100,4 +95,6 @@ class window():
         self.root.mainloop()
 
     def add_calories(self):
+        if self.calorieList.get(date.today()) is None:
+            self.calorieList[date.today()] = 0
         window = _CalorieWindow(self.root, self.calorieList, self.foodList)

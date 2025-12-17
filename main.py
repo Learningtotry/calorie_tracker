@@ -31,6 +31,7 @@ class CalorieTracker:
             pickle.dump(self.calorieData, f)
 
 myTracker = CalorieTracker(tk.Tk())
+
 while True:
     myTracker.window.run()
     myTracker.root.mainloop()
