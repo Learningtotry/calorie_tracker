@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 import tkinter as tk
 import pickle
 
+from lib import *
+
 pickle.dump(1, open("assets/data_file.pkl", "wb"))
 pickle.dump(1, open("assets/calorie_data.pkl", "wb"))
 # the data_file will have a list of days with calorie intakes listed next to them
