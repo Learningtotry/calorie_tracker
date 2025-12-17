@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 
 
-class FoodWindow():
+class _FoodWindow():
         def __init__(self, root, foodList):
             self.root = root
 
@@ -15,6 +15,7 @@ class FoodWindow():
             input_win.geometry("300x200")
 
             ttk.Label(input_win, text="Food name:").grid(row=0, column=0, padx=10, pady=10)
+            ttk.Label(input_win, text="Calories:").grid(row=1, column=0, padx=10, pady=10)
             food_name_entry = Entry(input_win)
             food_calorie_entry = Entry(input_win)
             food_name_entry.grid(row=0, column=1, padx=10)
@@ -30,7 +31,7 @@ class FoodWindow():
 
 
 
-class CalorieWindow():
+class _CalorieWindow():
     def __init__(self, root, calorieList, foodList):
         self.root = root
         self.calorieList = calorieList
@@ -78,13 +79,13 @@ class window():
         ttk.Button(self.mainFrame, text="Add Food", command = self.add_food).grid(row=2, column=0, pady=10)
         #self.calculateButton = ttk.Button(self.mainFrame, text="Add food", command = self.add_food)
     def add_food(self):
-        window = FoodWindow(self.root, self.foodList)
+        window = _FoodWindow(self.root, self.foodList)
 
     def run(self):
         self.root.mainloop()
 
     def add_calories(self):
-        window = CalorieWindow(self.root, self.calorieList, self.foodList)
+        window = _CalorieWindow(self.root, self.calorieList, self.foodList)
 
 myWindow = window("Calorie Tracker", 400, 600)
 while True:
